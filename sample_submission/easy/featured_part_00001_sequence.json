@@ -1,0 +1,11 @@
+{
+  "part_id": "featured_part_00001",
+  "summary": {
+    "number_of_operations": 3
+  },
+  "operations": [
+    {"operation_number": 1, "o1": "mill_contour", "o2": "AREA_MILL"},
+    {"operation_number": 2, "o1": "mill_planar", "o2": "FLOOR_WALL"},
+    {"operation_number": 3, "o1": "hole_making", "o2": "DRILLING"}
+  ]
+}

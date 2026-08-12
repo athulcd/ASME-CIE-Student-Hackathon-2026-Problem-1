@@ -1,0 +1,11 @@
+{
+  "part_id": "featured_part_00001",
+  "summary": {
+    "number_of_operations": 3
+  },
+  "operations": [
+    {"operation_number": 1, "tool_type": "chamfer_mill", "tool_diameter_mm": 20.0},
+    {"operation_number": 2, "tool_type": "end_mill", "tool_diameter_mm": 6.0},
+    {"operation_number": 3, "tool_type": "twist_drill", "tool_diameter_mm": 10.0}
+  ]
+}

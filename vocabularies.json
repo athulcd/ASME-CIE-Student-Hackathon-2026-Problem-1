@@ -1,0 +1,28 @@
+{
+  "o1": [
+    "hole_making",
+    "mill_contour",
+    "mill_planar",
+    "OTHER"
+  ],
+  "o2": [
+    "DRILLING",
+    "SPOT_DRILLING",
+    "DEEP_HOLE_DRILLING",
+    "HOLE_MILLING",
+    "BORING_REAMING",
+    "AREA_MILL",
+    "FLOOR_WALL",
+    "OTHER"
+  ],
+  "tool_type": [
+    "chamfer_mill",
+    "twist_drill",
+    "end_mill",
+    "spot_drill",
+    "insert_drill",
+    "gun_drill",
+    "spade_drill",
+    "boring_tool"
+  ]
+}
