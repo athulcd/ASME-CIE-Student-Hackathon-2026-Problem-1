@@ -17,6 +17,12 @@ FILENAME_RES = {
     "easy": re.compile(r"^(?P<part_id>[A-Za-z0-9][A-Za-z0-9_-]*)_sequence\.json$"),
     "hard": re.compile(r"^(?P<part_id>[A-Za-z0-9][A-Za-z0-9_-]*)_tools\.json$"),
 }
+MEDIUM_FILENAME_RE = re.compile(
+    r"^(?P<part_id>[A-Za-z0-9][A-Za-z0-9_-]*)_operation_(?P<operation_number>0[1-9]|[1-9][0-9]+)\.stl$"
+)
+HARD_PTP_FILENAME_RE = re.compile(
+    r"^(?P<part_id>[A-Za-z0-9][A-Za-z0-9_-]*)_operation_(?P<operation_number>0[1-9]|[1-9][0-9]+)\.ptp$"
+)
 
 
 def load_vocabularies(vocabulary_path: Path) -> dict[str, set[str]]:
@@ -42,12 +48,83 @@ def require_exact_keys(value: dict[str, Any], expected: set[str], location: str,
         errors.append(f"{location}: unexpected field(s): {', '.join(unexpected)}.")
 
 
+def validate_medium_submission(submission_path: Path) -> list[str]:
+    """Return format errors for a directory of numbered STL operation states."""
+    if not submission_path.is_dir():
+        return ["medium submissions must be a directory containing STL operation files."]
+
+    errors: list[str] = []
+    stl_files = sorted(submission_path.glob("*.stl"))
+    if not stl_files:
+        return ["medium submission directory must contain at least one '.stl' file."]
+
+    part_ids: set[str] = set()
+    operation_numbers: list[int] = []
+    for stl_path in stl_files:
+        match = MEDIUM_FILENAME_RE.fullmatch(stl_path.name)
+        if not match:
+            errors.append(
+                f"filename '{stl_path.name}' must be '<part_id>_operation_<NN>.stl', "
+                "for example 'featured_part_00001_operation_01.stl'."
+            )
+            continue
+        if stl_path.stat().st_size == 0:
+            errors.append(f"'{stl_path.name}' must not be empty.")
+        part_ids.add(match.group("part_id"))
+        operation_numbers.append(int(match.group("operation_number")))
+
+    if len(part_ids) > 1:
+        errors.append("all medium STL files must use the same part_id.")
+    if operation_numbers and sorted(operation_numbers) != list(range(1, len(operation_numbers) + 1)):
+        errors.append("medium STL operation numbers must start at 01 and be consecutive.")
+
+    return errors
+
+
+def validate_hard_tool_path_submission(submission_path: Path) -> list[str]:
+    """Return format errors for a directory of numbered PTP tool paths."""
+    if not submission_path.is_dir():
+        return ["hard tool-path submissions must be a directory containing PTP operation files."]
+
+    errors: list[str] = []
+    ptp_files = sorted(submission_path.glob("*.ptp"))
+    if not ptp_files:
+        return ["hard tool-path submission directory must contain at least one '.ptp' file."]
+
+    part_ids: set[str] = set()
+    operation_numbers: list[int] = []
+    for ptp_path in ptp_files:
+        match = HARD_PTP_FILENAME_RE.fullmatch(ptp_path.name)
+        if not match:
+            errors.append(
+                f"filename '{ptp_path.name}' must be '<part_id>_operation_<NN>.ptp', "
+                "for example 'featured_part_00001_operation_01.ptp'."
+            )
+            continue
+        if ptp_path.stat().st_size == 0:
+            errors.append(f"'{ptp_path.name}' must not be empty.")
+        part_ids.add(match.group("part_id"))
+        operation_numbers.append(int(match.group("operation_number")))
+
+    if len(part_ids) > 1:
+        errors.append("all hard PTP files must use the same part_id.")
+    if operation_numbers and sorted(operation_numbers) != list(range(1, len(operation_numbers) + 1)):
+        errors.append("hard PTP operation numbers must start at 01 and be consecutive.")
+
+    return errors
+
+
 def validate_submission(
     submission_path: Path,
     difficulty: str,
     vocabularies: dict[str, set[str]],
 ) -> list[str]:
     """Return format errors. Sequence length is intentionally never compared to truth."""
+    if difficulty == "medium":
+        return validate_medium_submission(submission_path)
+    if difficulty == "hard" and submission_path.is_dir():
+        return validate_hard_tool_path_submission(submission_path)
+
     errors: list[str] = []
     suffix = "sequence" if difficulty == "easy" else "tools"
     match = FILENAME_RES[difficulty].fullmatch(submission_path.name)
@@ -132,9 +209,13 @@ def validate_submission(
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description="Check an IPW sequence submission's filename and JSON format.")
-    parser.add_argument("submission", type=Path, help="JSON prediction file to validate")
-    parser.add_argument("--difficulty", choices=("easy", "hard"), required=True)
+    parser = argparse.ArgumentParser(description="Check an IPW submission's filename and format.")
+    parser.add_argument(
+        "submission",
+        type=Path,
+        help="easy/hard JSON prediction file, medium STL directory, or hard PTP directory",
+    )
+    parser.add_argument("--difficulty", choices=("easy", "medium", "hard"), required=True)
     parser.add_argument(
         "--vocabularies",
         type=Path,
@@ -143,11 +224,13 @@ def main() -> int:
     )
     arguments = parser.parse_args()
 
-    try:
-        vocabularies = load_vocabularies(arguments.vocabularies)
-    except ValueError as error:
-        print(f"INVALID: {error}")
-        return 2
+    vocabularies: dict[str, set[str]] = {}
+    if arguments.difficulty != "medium":
+        try:
+            vocabularies = load_vocabularies(arguments.vocabularies)
+        except ValueError as error:
+            print(f"INVALID: {error}")
+            return 2
 
     errors = validate_submission(arguments.submission, arguments.difficulty, vocabularies)
     if errors:
@@ -156,11 +239,11 @@ def main() -> int:
             print(f"- {error}")
         return 1
 
-    print(
-        f"VALID: {arguments.submission.name} is a correctly formatted "
-        f"{arguments.difficulty} submission."
-    )
-    print("No ground-truth sequence length check was performed.")
+    print(f"VALID: {arguments.submission.name} is a correctly formatted {arguments.difficulty} submission.")
+    if arguments.difficulty == "medium" or (arguments.difficulty == "hard" and arguments.submission.is_dir()):
+        print("No ground-truth operation count check was performed.")
+    else:
+        print("No ground-truth sequence length check was performed.")
     return 0
 
 
