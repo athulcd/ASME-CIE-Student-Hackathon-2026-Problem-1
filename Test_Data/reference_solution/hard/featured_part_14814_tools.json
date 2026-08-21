@@ -1,0 +1,78 @@
+{
+  "part_id": "featured_part_14814",
+  "summary": {
+    "number_of_operations": 14
+  },
+  "operations": [
+    {
+      "operation_number": 1,
+      "tool_type": "spot_drill",
+      "tool_diameter_mm": 12.0
+    },
+    {
+      "operation_number": 2,
+      "tool_type": "spot_drill",
+      "tool_diameter_mm": 12.0
+    },
+    {
+      "operation_number": 3,
+      "tool_type": "spot_drill",
+      "tool_diameter_mm": 12.0
+    },
+    {
+      "operation_number": 4,
+      "tool_type": "spot_drill",
+      "tool_diameter_mm": 12.0
+    },
+    {
+      "operation_number": 5,
+      "tool_type": "twist_drill",
+      "tool_diameter_mm": 7.1
+    },
+    {
+      "operation_number": 6,
+      "tool_type": "twist_drill",
+      "tool_diameter_mm": 13.5
+    },
+    {
+      "operation_number": 7,
+      "tool_type": "twist_drill",
+      "tool_diameter_mm": 7.1
+    },
+    {
+      "operation_number": 8,
+      "tool_type": "twist_drill",
+      "tool_diameter_mm": 12.2
+    },
+    {
+      "operation_number": 9,
+      "tool_type": "twist_drill",
+      "tool_diameter_mm": 11.8
+    },
+    {
+      "operation_number": 10,
+      "tool_type": "twist_drill",
+      "tool_diameter_mm": 11.8
+    },
+    {
+      "operation_number": 11,
+      "tool_type": "end_mill",
+      "tool_diameter_mm": 10.0
+    },
+    {
+      "operation_number": 12,
+      "tool_type": "end_mill",
+      "tool_diameter_mm": 10.0
+    },
+    {
+      "operation_number": 13,
+      "tool_type": "end_mill",
+      "tool_diameter_mm": 18.0
+    },
+    {
+      "operation_number": 14,
+      "tool_type": "end_mill",
+      "tool_diameter_mm": 10.0
+    }
+  ]
+}

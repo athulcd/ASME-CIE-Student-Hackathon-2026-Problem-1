@@ -1,0 +1,148 @@
+{
+  "part_id": "featured_part_22222",
+  "summary": {
+    "number_of_operations": 28
+  },
+  "operations": [
+    {
+      "operation_number": 1,
+      "tool_type": "spot_drill",
+      "tool_diameter_mm": 12.0
+    },
+    {
+      "operation_number": 2,
+      "tool_type": "spot_drill",
+      "tool_diameter_mm": 12.0
+    },
+    {
+      "operation_number": 3,
+      "tool_type": "spot_drill",
+      "tool_diameter_mm": 12.0
+    },
+    {
+      "operation_number": 4,
+      "tool_type": "spot_drill",
+      "tool_diameter_mm": 12.0
+    },
+    {
+      "operation_number": 5,
+      "tool_type": "spot_drill",
+      "tool_diameter_mm": 12.0
+    },
+    {
+      "operation_number": 6,
+      "tool_type": "spot_drill",
+      "tool_diameter_mm": 12.0
+    },
+    {
+      "operation_number": 7,
+      "tool_type": "spot_drill",
+      "tool_diameter_mm": 12.0
+    },
+    {
+      "operation_number": 8,
+      "tool_type": "twist_drill",
+      "tool_diameter_mm": 10.0
+    },
+    {
+      "operation_number": 9,
+      "tool_type": "twist_drill",
+      "tool_diameter_mm": 10.0
+    },
+    {
+      "operation_number": 10,
+      "tool_type": "twist_drill",
+      "tool_diameter_mm": 22.0
+    },
+    {
+      "operation_number": 11,
+      "tool_type": "twist_drill",
+      "tool_diameter_mm": 22.0
+    },
+    {
+      "operation_number": 12,
+      "tool_type": "twist_drill",
+      "tool_diameter_mm": 22.0
+    },
+    {
+      "operation_number": 13,
+      "tool_type": "twist_drill",
+      "tool_diameter_mm": 22.0
+    },
+    {
+      "operation_number": 14,
+      "tool_type": "twist_drill",
+      "tool_diameter_mm": 8.8
+    },
+    {
+      "operation_number": 15,
+      "tool_type": "twist_drill",
+      "tool_diameter_mm": 13.8
+    },
+    {
+      "operation_number": 16,
+      "tool_type": "twist_drill",
+      "tool_diameter_mm": 8.8
+    },
+    {
+      "operation_number": 17,
+      "tool_type": "twist_drill",
+      "tool_diameter_mm": 8.8
+    },
+    {
+      "operation_number": 18,
+      "tool_type": "twist_drill",
+      "tool_diameter_mm": 8.8
+    },
+    {
+      "operation_number": 19,
+      "tool_type": "twist_drill",
+      "tool_diameter_mm": 8.8
+    },
+    {
+      "operation_number": 20,
+      "tool_type": "end_mill",
+      "tool_diameter_mm": 12.0
+    },
+    {
+      "operation_number": 21,
+      "tool_type": "boring_tool",
+      "tool_diameter_mm": 17.0
+    },
+    {
+      "operation_number": 22,
+      "tool_type": "boring_tool",
+      "tool_diameter_mm": 17.0
+    },
+    {
+      "operation_number": 23,
+      "tool_type": "boring_tool",
+      "tool_diameter_mm": 17.0
+    },
+    {
+      "operation_number": 24,
+      "tool_type": "boring_tool",
+      "tool_diameter_mm": 17.0
+    },
+    {
+      "operation_number": 25,
+      "tool_type": "end_mill",
+      "tool_diameter_mm": 25.4
+    },
+    {
+      "operation_number": 26,
+      "tool_type": "end_mill",
+      "tool_diameter_mm": 25.4
+    },
+    {
+      "operation_number": 27,
+      "tool_type": "end_mill",
+      "tool_diameter_mm": 25.4
+    },
+    {
+      "operation_number": 28,
+      "tool_type": "end_mill",
+      "tool_diameter_mm": 25.4
+    }
+  ]
+}

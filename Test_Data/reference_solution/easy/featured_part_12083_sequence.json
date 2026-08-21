@@ -1,0 +1,78 @@
+{
+  "part_id": "featured_part_12083",
+  "summary": {
+    "number_of_operations": 14
+  },
+  "operations": [
+    {
+      "operation_number": 1,
+      "o1": "hole_making",
+      "o2": "SPOT_DRILLING"
+    },
+    {
+      "operation_number": 2,
+      "o1": "hole_making",
+      "o2": "SPOT_DRILLING"
+    },
+    {
+      "operation_number": 3,
+      "o1": "hole_making",
+      "o2": "SPOT_DRILLING"
+    },
+    {
+      "operation_number": 4,
+      "o1": "hole_making",
+      "o2": "DRILLING"
+    },
+    {
+      "operation_number": 5,
+      "o1": "hole_making",
+      "o2": "DRILLING"
+    },
+    {
+      "operation_number": 6,
+      "o1": "hole_making",
+      "o2": "DRILLING"
+    },
+    {
+      "operation_number": 7,
+      "o1": "hole_making",
+      "o2": "DRILLING"
+    },
+    {
+      "operation_number": 8,
+      "o1": "hole_making",
+      "o2": "HOLE_MILLING"
+    },
+    {
+      "operation_number": 9,
+      "o1": "hole_making",
+      "o2": "HOLE_MILLING"
+    },
+    {
+      "operation_number": 10,
+      "o1": "mill_contour",
+      "o2": "AREA_MILL"
+    },
+    {
+      "operation_number": 11,
+      "o1": "mill_contour",
+      "o2": "AREA_MILL"
+    },
+    {
+      "operation_number": 12,
+      "o1": "mill_planar",
+      "o2": "FLOOR_WALL"
+    },
+    {
+      "operation_number": 13,
+      "o1": "mill_planar",
+      "o2": "FLOOR_WALL"
+    },
+    {
+      "operation_number": 14,
+      "o1": "hole_making",
+      "o2": "HOLE_MILLING"
+    }
+  ]
+}
